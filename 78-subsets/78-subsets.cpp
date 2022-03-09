@@ -19,3 +19,35 @@ public:
         return ans;
     }
 };
+// class Solution {
+// public:
+//     vector<vector<int>> subsets(vector<int>& nums) {
+//         map<vector<int> , int> m;
+//         int n = nums.size();
+//         int numOfSubset = 1<<n;
+//         vector< vector<int> >ans;
+//         for(int i = 0; i<numOfSubset ; i++){
+//             int a = i;
+//             int index = 0;
+//             vector<int> subans;
+//             while(a!=0){
+                
+//                 if(a&1==1){
+//                     subans.push_back(nums[index]);
+//                 }
+//                 index++;
+//                 a = a>>1;
+//             }
+//             sort(subans.begin() , subans.end());
+//             if(m[subans]>0){
+//                 continue;
+//             }
+//             else{
+//                 m[subans]++;
+//                 ans.push_back(subans);
+//             }
+            
+//         }
+//         return ans;
+//     }
+// };
