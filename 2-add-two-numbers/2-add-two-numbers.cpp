@@ -16,7 +16,6 @@ public:
         ListNode *result = new ListNode(-1);
         ListNode *temp = result;
         int carry = 0;
-        vector<int> v;
         while(p!=NULL and q!=NULL){
             int currSum = p->val+q->val+carry;
             if(currSum > 9){
