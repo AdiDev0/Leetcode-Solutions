@@ -31,25 +31,6 @@ public:
             st.pop();
         }
         reverse(str.begin(), str.end());
-        // int lastClose = 0;
-        // for(int i = 0; i<str.size(); i++){
-        //     if(str[i]==')'){
-        //         lastClose = i;
-        //     }
-        // }
-        // if(open>0){
-        //     string ans = "";
-        //     // reverse(str.begin(), str.end());
-        //     for(int i = lastClose+1; i<str.size(); i++){
-        //         if(str[i]=='(' and open>0){
-        //             open--;
-        //         }
-        //         else{
-        //             ans.push_back(str[i]);
-        //         }
-        //     }
-        //     return ans;
-        // }
         return str;
     }
 };
