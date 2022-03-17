@@ -4,7 +4,7 @@ public:
         int n = s.size();
         stack<int> st;
         int totScore = 0;
-        vector<pair<int,int>> v(100,{0,0});
+        vector<pair<int,int>> v(51,{0,0});
         
         for(int i = 0; i<n; i++){
             if(st.empty() or s[i]=='('){
