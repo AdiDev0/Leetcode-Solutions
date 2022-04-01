@@ -42,14 +42,6 @@ public:
             }
             ans = max(ans, nums[i]*(next-prev+1));
         }
-        
-        // for(int i = 0; i<n ;i++){
-        //     cout<<nse[i]<<" ";
-        // }
-        // cout<<endl;
-        // for(int i = 0; i<n ;i++){
-        //     cout<<pse[i]<<" ";
-        // }
         return ans;
     }
 };
