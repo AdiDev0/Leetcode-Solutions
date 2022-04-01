@@ -19,7 +19,8 @@ public:
                     temp.push_back(s[j++]);
                 }
                 if(m.find(temp)!=m.end()){
-                    ans.append(m[temp]);
+                    // ans.append(m[temp]);
+                    ans+=m[temp];
                 }
                 else{
                     ans.push_back('?');
