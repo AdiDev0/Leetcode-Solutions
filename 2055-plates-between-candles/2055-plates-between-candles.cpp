@@ -17,14 +17,6 @@ public:
             else closeRight[i] = closeRight[i+1];
         }
         
-        // for(int i = 0; i<n; i++){
-        //     cout<<closeLeft[i]<<" ";
-        // }
-        // cout<<endl;
-        // for(int i = 0; i<n; i++){
-        //     cout<<closeRight[i]<<" ";
-        // }
-        // cout<<endl;
         if(s[0]=='*') prefix[0] = 1;
         
         for(int i = 1; i<n; i++){
