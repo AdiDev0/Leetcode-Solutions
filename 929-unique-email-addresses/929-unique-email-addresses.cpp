@@ -3,23 +3,22 @@ public:
     int numUniqueEmails(vector<string>& emails) {
         unordered_map<string ,int> m;
         for(auto it: emails){
-            string str = it;
             string temp = "";
             int i = 0;
-            while(str[i]!='@'){
-                if(str[i]=='+'){
+            while(it[i]!='@'){
+                if(it[i]=='+'){
                     break;
                 }
-                if(str[i]=='.'){
+                if(it[i]=='.'){
                     i++;
                     continue;
                 }
-                temp.push_back(str[i++]);
+                temp.push_back(it[i++]);
             }
-            while(str[i]!='@') i++;
+            while(it[i]!='@') i++;
             
-            // cout<<temp<<" "<<str.substr(i+1, str.size()-i+1)<<endl;
-            m[temp+'@'+str.substr(i+1, str.size()-i+1)]++;
+            // cout<<temp<<" "<<it.substr(i+1, it.size()-i+1)<<endl;
+            m[temp+'@'+it.substr(i+1, it.size()-i+1)]++;
         }
         return m.size();
     }
