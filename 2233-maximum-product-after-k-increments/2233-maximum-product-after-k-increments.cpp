@@ -15,7 +15,7 @@ public:
             pq.push(a+1);
         }
         while(!pq.empty()){
-            mult = (long)(mult*pq.top())%mod;
+            mult = (long long)(mult*pq.top())%mod;
             pq.pop();
         }
         return mult;
