@@ -2,7 +2,7 @@ class Solution {
 public:
     int minAreaRect(vector<vector<int>>& p) {
         int n = p.size();
-        unordered_map<int, set<int>> m;
+        unordered_map<int, unordered_set<int>> m;
         for(int i = 0; i<n; i++){
             m[p[i][0]].insert(p[i][1]);
         }
