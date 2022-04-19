@@ -17,19 +17,12 @@ public:
                 }
             }
         }
-        for(auto it: m){
-            cout<<it.first<<" ";
-            vector<int> v = it.second;
-            for(int i = 1; i<v.size(); i++){
-                cout<<v[i]<<" ";
-            }
-            cout<<endl;
-        }
+        
         string s = "";
         for(auto it: m){
             s.push_back(it.first);
         }
-        cout<<s<<" ";
+        
         for(int i = 0; i<s.size(); i++){
             for(int j = i+1; j<s.size(); j++){
                 vector<int> a = m[s[i]];
