@@ -1,44 +1,17 @@
 class Solution {
 public:
+    int solve(vector<int> &nums, vector<int> &dp, int i){
+        if(i>=nums.size()){
+            return 0;
+        }
+        if(dp[i]!=-1) return dp[i];
+        int pick = nums[i]+solve(nums, dp, i+2);
+        int nonPick = solve(nums, dp, i+1);
+        return dp[i] = max(pick, nonPick);
+    }
     int rob(vector<int>& nums) {
         int n = nums.size();
-        if(n==0) return 0;
-        int a = nums[0];
-        if(n==1) return a;
-        int b = max(a,nums[1]);
-        if(n==2) return b;
-        int ans = 0;
-        for(int i = 2; i<n; i++){
-            int currAns = max(a+nums[i],b);
-            a = b;
-            b = currAns;
-            ans = max(ans,currAns);
-        }
-        return ans;
+        vector<int> dp(n,-1);
+        return solve(nums, dp, 0);
     }
 };
-
-// class Solution {
-// public:
-//     int rob(vector<int>& nums) {
-//         int n = nums.size();
-//         if(n==1){
-//             return nums[0];
-//         }
-//         int dp[n];
-//         dp[0] = nums[0];
-//         for(int i = 1;i<n;i++){
-//             dp[i] = nums[i];
-//             for(int j =0; j<i-1; j++){
-//                 if(nums[i]+dp[j]>dp[i]){
-//                     dp[i] = nums[i]+dp[j];
-//                 }
-//             }
-//         }
-//         int ans = 0;
-//         for(int i =0 ;i<n; i++){
-//             ans = max(ans,dp[i]);
-//         }
-//         return ans;
-//     }
-// };
