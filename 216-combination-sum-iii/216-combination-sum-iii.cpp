@@ -6,10 +6,10 @@ public:
             ans.push_back(temp);
             return;
         }
-        if(sum>target or temp.size()>k) return;
+        // if(sum>target or temp.size()>k) return;
         int i = index;
         while(i<9){
-            if(sum+v[i]<=target){
+            if(sum+v[i]<=target and temp.size()<k){
                 sum+=v[i];
                 temp.push_back(v[i]);
                 solve(v,k,target,temp,sum,i+1);
