@@ -1,16 +1,10 @@
 class Solution {
 public:
     int solve(vector<vector<int>> &grid, int row, int col, vector<vector<int>> &dp,int n,int m){
-        if(dp[row][col]!=-1) return dp[row][col];
-        if(row==n-1){
-            int maxi = INT_MAX;
-            for(int i = 0; i<m; i++){
-                if(i!=col){
-                    maxi = min(maxi, grid[n-1][i]);
-                }
-            }
-            return dp[row][col] = maxi;
+        if(row==n){
+            return 0;
         }
+        if(dp[row][col]!=-1) return dp[row][col];
         int maxi = INT_MAX;
         for(int i = 0; i<m; i++){
             if(i!=col){
