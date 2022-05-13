@@ -46,7 +46,7 @@ class Solution{
         vector<vector<int>> vis(n,vector<int>(n,-1));
         vis[0][0] = 1;
         solve(grid,n,s,0,0,vis);
-        sort(ans.begin(),ans.end());
+        // sort(ans.begin(),ans.end());
         return ans;
     }
 };
