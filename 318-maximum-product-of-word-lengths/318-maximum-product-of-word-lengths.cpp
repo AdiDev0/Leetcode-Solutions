@@ -20,13 +20,7 @@ public:
                 v[s[j]-'a']++;
             }
             freq.push_back(v);
-        }
-        // for(int i = 0; i<n; i++){
-        //     for(auto it: freq[i]){
-        //         cout<<it<<" ";
-        //     }
-        //     cout<<endl;
-        // }    
+        }    
         int ans = 0;
         for(int i = 0; i<n; i++){
             for(int j = i+1; j<n; j++){
