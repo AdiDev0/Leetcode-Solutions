@@ -21,7 +21,7 @@ public:
         }
         return true;
     }
-    void solve(int n, vector<string> &ans, string &s, int row, int col){
+    void solve(int n, vector<string> &ans, int row, int col){
         if(row==n){
             v.push_back(ans);
             return;
@@ -29,23 +29,16 @@ public:
         for(int i = 0; i<n; i++){
             if(canPlace(n,ans, row, i)){
                 ans[row][i] = 'Q';
-                solve(n,ans,s,row+1,col);
+                solve(n,ans,row+1,col);
                 ans[row][i] = '.';
             }
         }
     }
     vector<vector<string>> solveNQueens(int n) {
-        vector<string> ans;
-        string s = "";
-        for(int i = 0; i<n; i++){
-            s.push_back('.');
-        }
-        for(int i = 0; i<n; i++){
-            ans.push_back(s);
-        }
+        vector<string> ans(n, string(n,'.'));
         for(int i = 0; i<n; i++){
             ans[0][i] = 'Q';
-            solve(n, ans, s, 1, i);
+            solve(n, ans, 1, i);
             ans[0][i] = '.';
         }
         return v;
