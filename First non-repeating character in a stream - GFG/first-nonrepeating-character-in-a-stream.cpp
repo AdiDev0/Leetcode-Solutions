@@ -12,8 +12,11 @@ class Solution {
             queue<char> q;
             
             for(int i = 0; i<n; i++){
-                q.push(s[i]);
                 m[s[i]]++;
+                //simple optimization
+                if(m[s[i]]<=1){
+                    q.push(s[i]);
+                }
                 while(!q.empty() and m[q.front()]>1){
                     q.pop();
                 }
