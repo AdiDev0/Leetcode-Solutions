@@ -15,10 +15,9 @@ public:
             if(count-maxi<=k){
                 ans = max(ans, count);
             }
-            while(count-maxi>k){
+            if(count-maxi>k){
                 if(m[s[i]]>1) m[s[i]]--;
                 else m.erase(s[i]);
-                // maxi = max(maxi, m[s[i]]);
                 count--;
                 i++;
             }
@@ -27,3 +26,5 @@ public:
         return ans;
     }
 };
+// Since we are looking for the longest sub-string, we don't need to shrink the sliding window by more than 1 character:
+// by shrinking the left pointer more than 1, it means that we are shrinking the sliding window. We don't want to shrink it because we don't care. If we have a max window length 5, if we shrink the sliding window to 4, even if there are valid substring of this sliding window length, we don't care because we only care for window length greater or equal to 5 (to be returned as final answer)
