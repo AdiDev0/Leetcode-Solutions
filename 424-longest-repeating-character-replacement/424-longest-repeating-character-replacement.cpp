@@ -18,7 +18,7 @@ public:
             while(count-maxi>k){
                 if(m[s[i]]>1) m[s[i]]--;
                 else m.erase(s[i]);
-                maxi = max(maxi, m[s[i]]);
+                // maxi = max(maxi, m[s[i]]);
                 count--;
                 i++;
             }
