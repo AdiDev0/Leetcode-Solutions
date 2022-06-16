@@ -19,12 +19,10 @@ public:
     int maxJumps(vector<int>& arr, int d){
         int n = arr.size();
         vector<int> dp(n, -1);
-        for(int i = 0; i<n; i++){
-            int a = solve(arr,n, d, dp,i);
-        }
         int ans = 0;
         for(int i = 0; i<n; i++){
-            ans = max(ans, dp[i]);
+            int currAns = solve(arr,n, d, dp,i);
+            ans = max(ans, currAns);
         }
         return ans+1;
     }
