@@ -1,5 +1,5 @@
 # Swapping pairs make sum equal
-##  Easy 
+## Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given two arrays of integers <strong>A[]</strong> and <strong>B[]</strong> of size <strong>N</strong> and <strong>M</strong>, the task is to check if a pair of values (one value from each array) exists such that swapping the elements of the pair will make the sum of two arrays equal.</span></p>
 
