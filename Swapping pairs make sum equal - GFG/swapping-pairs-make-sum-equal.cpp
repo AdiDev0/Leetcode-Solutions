@@ -17,9 +17,9 @@ class Solution{
 	    for(int i = 0; i<m; i++){
 	        sumB+=B[i];
 	    }
-	    if(sumA<sumB){
-	        return findSwapValues(B,m,A,n);
-	    }
+	   // if(sumA<sumB){
+	   //     return findSwapValues(B,m,A,n);
+	   // }
 	    int ogap = abs(sumA-sumB);
         for(int i = 0; i<n; i++){
             int low = 0;
@@ -28,10 +28,6 @@ class Solution{
                 int mid = low+(high-low)/2;
                 int ele = B[mid];
                 int diff = A[i]-ele;
-                // if(diff<0){
-                //     high = mid-1;
-                //     continue;
-                // }
                 int gap = (sumA-diff) - (sumB+diff);
                 if(gap==0) return 1;
                 if(gap<0) low = mid+1;
