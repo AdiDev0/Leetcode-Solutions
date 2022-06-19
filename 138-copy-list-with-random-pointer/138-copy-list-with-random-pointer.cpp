@@ -17,78 +17,34 @@ public:
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
-        if(head==NULL){
-            return NULL;
-        }
-        if(head->next==NULL){
-            Node* temp = new Node(head->val);
-            temp->next = NULL;
-            if(head->random){
-               temp->random = temp; 
-            }
-            else{
-                temp->random = NULL;
-            }
-            return temp;
-        }
+        if(head==NULL) return NULL;
         Node* p = head->next;
         Node* prev = head;
-        while(p!=NULL){
+        
+        while(prev!=NULL){
             Node* temp = new Node(prev->val);
             prev->next = temp;
             temp->next = p;
             prev = p;
-            p = p->next;
-            if(p==NULL){
-                Node* temp = new Node(prev->val);
-                prev->next = temp;
-                prev = prev->next;
-                prev->next = p;
-            }
+            if(p!=NULL) p = p->next;
         }
-        prev = head;
-        p = head->next;
-        while(p->next!=NULL){
-            if(prev->random){
-                p->random = prev->random->next;
-            }
-            else{
-                p->random = NULL;
-            }
+        p = head;
+        while(p and p->next){
+            if(p->random) p->next->random = p->random->next;
             p = p->next->next;
-            prev = prev->next->next;
-            if(p->next==NULL){
-                if(prev->random){
-                    p->random = prev->random->next;
-                }
-                else{
-                    p->random = NULL;
-                }
-            }
         }
+        Node* dummy = new Node(-1);
+        Node* d = dummy;
         prev = head;
         p = head->next;
-        Node* head1 = NULL;
-        Node* q = NULL;
-        while(p!=NULL){
+        while(prev!=NULL){
             prev->next = p->next;
-            if(head1==NULL){
-                q = p;
-                head1 = q;
-            }
-            else{
-                q->next = p;
-                q = q->next;
-            }
+            d->next = p;
+            d = d->next;
             prev = prev->next;
-            if(prev){
-                p = prev->next;
-            }
-            else{
-                break;
-            }
+            if(prev) p = prev->next;
         }
-        q->next = NULL;
-        return head1;
+        d->next = NULL;
+        return dummy->next;
     }
 };
