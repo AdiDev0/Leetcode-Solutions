@@ -20,6 +20,7 @@ public:
         return "#"+l+to_string(root->val)+r+"#";
     }
     string solve(TreeNode* root, string &s){
+        if(ans) return "";
         if(root==NULL) return "#";
         string l = solve(root->left, s);
         string r = solve(root->right, s);
