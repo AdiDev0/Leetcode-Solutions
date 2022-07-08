@@ -4,20 +4,22 @@ public:
         if(k<0 and n<0 and m<0){
             return 1;
         }
-        if(n>=0 and m>=0 and dp[n][m]!=-1) return dp[n][m];
         
-        if(n<0 and (m>=0 and k>=0)){
+        if(n<0 and m>=0 and k>=0){
             if(b[m]==c[k]){
                 return solve(a,b,c,n,m-1,k-1,dp);
             }
             return 0;
         }
-        if(m<0 and (n>=0 and k>=0)){
+        if(m<0 and n>=0 and k>=0){
             if(a[n]==c[k]){
                 return solve(a,b,c,n-1,m,k-1,dp);   
             }
             return 0;
         }
+        
+        if(dp[n][m]!=-1) return dp[n][m];
+        
         bool ans = false;
         if(a[n]==c[k]){
             ans = ans | solve(a,b,c,n-1,m,k-1,dp);
