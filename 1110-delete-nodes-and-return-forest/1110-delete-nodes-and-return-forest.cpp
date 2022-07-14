@@ -12,7 +12,7 @@
 class Solution {
 public:
     vector<TreeNode*> ans;
-    TreeNode* solve(TreeNode* root, unordered_map<int,int> &m){
+    TreeNode* solve(TreeNode* root, unordered_set<int> &m){
         
         if(root==NULL) return NULL;
         
@@ -20,7 +20,7 @@ public:
         TreeNode* r = solve(root->right, m);
         if(l and l->val==-1) root->left = NULL;
         if(r and r->val==-1) root->right = NULL;
-        if(m[root->val]){
+        if(m.find(root->val)!=m.end()){
             if(l and l->val!=-1){
                 ans.push_back(l);
             }
@@ -32,10 +32,10 @@ public:
         return root;
     }
     vector<TreeNode*> delNodes(TreeNode* root, vector<int>& del) {
-        unordered_map<int,int> m;
-        for(auto it: del) m[it]++;
+        unordered_set<int> m;
+        for(auto it: del) m.insert(it);
         TreeNode* r = solve(root, m);
-        if(!m[r->val] and r->val!=-1) ans.push_back(r);
+        if(m.find(r->val)==m.end() and r->val!=-1) ans.push_back(r);
         return ans;
     }
 };
