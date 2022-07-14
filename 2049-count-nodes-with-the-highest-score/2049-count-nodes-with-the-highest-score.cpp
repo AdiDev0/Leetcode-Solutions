@@ -1,6 +1,3 @@
-// 0
-//  \
-//   1
 
 class Solution {
 public:
@@ -20,14 +17,12 @@ public:
             int val = (nodes-l-r-1);
             long currAns = (long)l*r*(val!=0?val:1);
             ans[currAns]++;
-            // cout<<root<<" "<<l<<" "<<r<<" "<<val<<endl;
         }
         else{
             l = solve(m, v[0], nodes);
             int val = (nodes-l-1);
             long currAns = (long)l*(val!=0?val:1);
             ans[currAns]++;
-            // cout<<root<<" "<<l<<" "<<val<<endl;
         }
         return l+r+1;
     }
@@ -46,9 +41,7 @@ public:
                 node = it.first;
                 freq = it.second;
             }
-            // cout<<it.first<<" "<<it.second<<endl;
         }
-        
         return freq;
     }
 };
