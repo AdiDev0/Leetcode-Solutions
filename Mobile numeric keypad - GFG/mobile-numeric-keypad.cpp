@@ -14,8 +14,8 @@ class Solution{
 	    }
 	    if(dp[row][col][N]!=-1) return dp[row][col][N];
 	    
-	    int x[5] = {-1,0,1,0,0};
-	    int y[5] = {0,1,0,-1,0};
+	    int x[5] = {0,-1,0,1,0};
+	    int y[5] = {0,0,1,0,-1};
 	    ll count = 0;
 	    for(int i = 0; i<5; i++){
 	        int nextR = row+x[i];
@@ -39,7 +39,7 @@ class Solution{
 	        for(int j = 0; j<3; j++){
 	            if(v[i][j]==-1) continue;
 	            tot += solve(v, N-1, i, j, dp);
-	            
+	
 	        }
 	    }
 	    return tot;
