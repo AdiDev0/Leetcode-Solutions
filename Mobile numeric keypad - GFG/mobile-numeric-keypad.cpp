@@ -38,13 +38,8 @@ class Solution{
 	    for(int i = 0; i<4; i++){
 	        for(int j = 0; j<3; j++){
 	            if(v[i][j]==-1) continue;
-	            dp[i][j][N-1] = solve(v, N-1, i, j, dp);
+	            tot += solve(v, N-1, i, j, dp);
 	            
-	        }
-	    }
-	    for(int i = 0; i<4; i++){
-	        for(int j = 0; j<4; j++){
-	            if(dp[i][j][N-1]!=-1) tot += dp[i][j][N-1];
 	        }
 	    }
 	    return tot;
