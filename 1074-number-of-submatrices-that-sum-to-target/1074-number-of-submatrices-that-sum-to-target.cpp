@@ -2,16 +2,16 @@ class Solution {
 public:
     int kadanes(vector<int> &v ,int k){
         int n = v.size();
-        unordered_map<int,int> s;
-        s[0]++;
+        unordered_map<int,int> m;
+        m[0]++;
         int currSum = 0;
         int ans = 0;
         for(int i = 0; i<n; i++){
             currSum+=v[i];
-            if(s.find(currSum-k)!=s.end()){
-                ans+=s[currSum-k];
+            if(m.find(currSum-k)!=m.end()){
+                ans+=m[currSum-k];
             }
-            s[currSum]++;
+            m[currSum]++;
         }
         return ans;
     }
