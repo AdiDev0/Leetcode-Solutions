@@ -32,21 +32,11 @@ public:
         ListNode* curr = p->next;
         ListNode* first = p->next;
         p->next = NULL;
-        if(qnext!=NULL){
-            while(curr!=qnext){
-                nextOne = curr->next;
-                curr->next = prev;
-                prev = curr;
-                curr = nextOne;
-            }
-        }
-        else{
-            while(curr!=NULL){
-                nextOne = curr->next;
-                curr->next = prev;
-                prev = curr;
-                curr = nextOne;
-            }
+        while(curr!=qnext){
+            nextOne = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nextOne;
         }
         p->next = prev;
         if(first) first->next = qnext;
