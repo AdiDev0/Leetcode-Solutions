@@ -33,7 +33,7 @@ public:
         ListNode* first = p->next;
         p->next = NULL;
         if(qnext!=NULL){
-            while(curr!=NULL and curr!=qnext){
+            while(curr!=qnext){
                 nextOne = curr->next;
                 curr->next = prev;
                 prev = curr;
