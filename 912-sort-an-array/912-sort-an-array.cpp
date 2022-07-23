@@ -42,7 +42,6 @@ public:
         int l = 0;
         int h = nums.size()-1;
         mergeSort(l,h,nums);
-        // sort(nums.begin(),nums.end());
         return nums;
     }
 };
