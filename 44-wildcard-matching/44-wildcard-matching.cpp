@@ -10,9 +10,9 @@ public:
         }
         if(dp[i][j]!=-1) return dp[i][j];
         if(p[j]=='*'){
-            bool usingAst = solve(s,p,i+1,j,dp);
-            bool notUsingAst = solve(s,p,i,j+1,dp);
-            return dp[i][j] = usingAst or notUsingAst;
+            bool usingAsterisk = solve(s,p,i+1,j,dp);
+            bool notUsingAsterisk = solve(s,p,i,j+1,dp);
+            return dp[i][j] = usingAsterisk or notUsingAsterisk;
         }
         else if(s[i]==p[j] or p[j]=='?'){
             return dp[i][j] = solve(s,p,i+1,j+1,dp);
