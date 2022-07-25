@@ -45,10 +45,7 @@ public:
             if(target==nums[mid]){
                 int left = getLeft(nums, 0, mid, target);
                 int right = getRight(nums, mid, n-1, target);
-                if(left==-1 and right!=-1) return {mid, right};
-                if(right==-1 and left!=-1) return {left, mid};
-                if(left!=-1 and right!=-1) return {left, right};
-                break;
+                return {left, right};
             }
             else if(target>nums[mid]){
                 low = mid+1;
