@@ -3,7 +3,7 @@ public:
     vector<string> findAndReplacePattern(vector<string>& words, string pa) {
         int n = words.size();
         vector<string> ans;
-        unordered_map<char,vector<int>> m1, m2;
+        unordered_map<char,vector<int>> m1;
         for(int i = 0; i<pa.size(); i++){
             m1[pa[i]].push_back(i);
         }
