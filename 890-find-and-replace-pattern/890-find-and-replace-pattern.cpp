@@ -25,7 +25,6 @@ public:
                 j++;
             }
             if(f) ans.push_back(s);
-            m2.clear();
         }
         return ans;
     }
