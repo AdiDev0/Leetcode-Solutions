@@ -12,12 +12,11 @@ public:
             }
             if(pq.empty()){
                 dp[i] = nums[i];
-                pq.push({dp[i], i});
             }
             else{
-                dp[i] = max({nums[i]+pq.top().first, nums[i]});
-                pq.push({dp[i], i});
+                dp[i] = max(nums[i]+pq.top().first, nums[i]);
             }
+            pq.push({dp[i], i});
             ans = max(ans, dp[i]);
         }
         return ans;
