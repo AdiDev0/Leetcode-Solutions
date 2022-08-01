@@ -17,13 +17,12 @@ public:
         auto a = solve(root->left);
         auto b = solve(root->right);
         
-        int aleft = a.first;
+    // from left child we need ans for its right;
         int aright = a.second;
         
+    // from right child we need ans for its left;    
         int bleft = b.first;
-        int bright = b.second;
-        
-        
+                
         ans = max({ans, aright+1, bleft+1});
         return {aright+1, bleft+1};
     }
