@@ -19,7 +19,7 @@ public:
                     count++;
                 }
             }
-            if(count>=t.size()){
+            if(count==t.size()){
                 while(mt.find(s[i])==mt.end() or ms[s[i]]>mt[s[i]]){
                     ms[s[i]]--;
                     i++;
@@ -35,3 +35,5 @@ public:
         return s.substr(start, ans);
     }
 };
+
+// s = "DAAOBECODEBANC"     t = "AABC"
