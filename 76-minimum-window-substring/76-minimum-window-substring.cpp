@@ -21,7 +21,7 @@ public:
             }
             if(count==t.size()){
                 while(mt.find(s[i])==mt.end() or ms[s[i]]>mt[s[i]]){
-                    ms[s[i]]--;
+                    if(ms[s[i]]) ms[s[i]]--;
                     i++;
                 }
                 if(ans > j-i+1){
@@ -36,4 +36,4 @@ public:
     }
 };
 
-// s = "DAAOBECODEBANC"     t = "AABC"
+// s = "DAAOBECODEBANC"     t = "ABC"
