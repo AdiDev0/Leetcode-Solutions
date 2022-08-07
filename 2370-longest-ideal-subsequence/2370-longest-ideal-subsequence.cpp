@@ -14,7 +14,6 @@ public:
         }
         if(abs(s[ind]-'a'-prevChar) <= k){
             pick = 1 + solve(s, k, dp, ind+1, s[ind]-'a');
-            notPick = solve(s, k, dp, ind+1, prevChar);
         }
         notPick = solve(s, k, dp, ind+1, prevChar);
         return dp[ind][prevChar] = max(pick, notPick);
