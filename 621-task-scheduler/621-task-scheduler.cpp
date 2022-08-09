@@ -15,7 +15,6 @@ public:
                 pq.push(-1*m[task[i]]);
             }
         }
-        
         while(!pq.empty()){
             int t = -1*pq.top();
             pq.pop();
