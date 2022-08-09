@@ -17,9 +17,8 @@ public:
         }
         while(!pq.empty()){
             int t = -1*pq.top();
-            pq.pop();
-            if(t>day){
-                pq.push(-1*t);
+            if(t<=day){
+                pq.pop();
             }
             day++;
         }
