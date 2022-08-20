@@ -1,7 +1,6 @@
 class Solution {
 public:
     int minRefuelStops(int target, int sf, vector<vector<int>>& s) {
-        sort(s.begin(), s.end());
         int n = s.size();
         int pos = sf;
         priority_queue<pair<int,int>> pq;
@@ -9,7 +8,6 @@ public:
         bool flag = false;
         for(int i = 0; i<n; i++){
             if(pos>=target){
-                flag = true;
                 break;
             }
             while(!pq.empty() and pos<s[i][0]){
@@ -25,9 +23,9 @@ public:
             cnt++;
             pq.pop();
         }
-        if(pos>=target){
-            flag = true;    
+        if(pos<target){
+            return -1;   
         }
-        return flag==true?cnt:-1;
+        return cnt;
     }
 };
