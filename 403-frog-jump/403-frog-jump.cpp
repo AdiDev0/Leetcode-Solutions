@@ -7,16 +7,15 @@ public:
         if(ind>stones.size()) return false;
         if(dp[ind][unit]!=-1) return dp[ind][unit];
         
-        int prevUnit = unit;
         bool ans = false;
-        if(prevUnit>1 and m[stones[ind]+prevUnit-1]){
-            ans = ans or solve(stones, m[stones[ind]+prevUnit-1], prevUnit-1, m, dp);
+        if(unit>1 and m[stones[ind]+unit-1]){
+            ans = ans or solve(stones, m[stones[ind]+unit-1], unit-1, m, dp);
         }
-        if(m[stones[ind]+prevUnit]){
-            ans = ans or solve(stones, m[stones[ind]+prevUnit], prevUnit, m, dp);
+        if(m[stones[ind]+unit]){
+            ans = ans or solve(stones, m[stones[ind]+unit], unit, m, dp);
         }
-        if(m[stones[ind]+prevUnit+1]){
-            ans = ans or solve(stones, m[stones[ind]+prevUnit+1], prevUnit+1, m, dp);
+        if(m[stones[ind]+unit+1]){
+            ans = ans or solve(stones, m[stones[ind]+unit+1], unit+1, m, dp);
         }
         return dp[ind][unit] = ans;
     }
@@ -28,6 +27,5 @@ public:
         }
         vector<vector<int>> dp(n+1, vector<int>(n+1, -1));
         return solve(stones, 0, 0, m, dp);
-        // return ans;
     }
 };
