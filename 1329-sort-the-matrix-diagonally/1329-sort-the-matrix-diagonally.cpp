@@ -8,9 +8,7 @@ public:
             int b = 0;
             vector<int> temp;
             while(a<n and b<m){
-                temp.push_back(mat[a][b]);
-                a++;
-                b++;
+                temp.push_back(mat[a++][b++]);
             }
             sort(temp.begin(), temp.end());
             a = i;
@@ -28,9 +26,7 @@ public:
             int b = j;
             vector<int> temp;
             while(a<n and b<m){
-                temp.push_back(mat[a][b]);
-                a++;
-                b++;
+                temp.push_back(mat[a++][b++]);
             }
             sort(temp.begin(), temp.end());
             a = 0;
