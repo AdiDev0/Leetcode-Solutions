@@ -2,11 +2,9 @@ class Solution {
 public:
     int n;
     int m;
-    void solve(vector<vector<int>> &land, int row, int col, int &mini, int &minj, int &maxi, int &maxj){
-        mini = min(mini, row);
-        minj = min(minj, col);
-        maxi = max(maxi, row);
-        maxj = max(maxj, col);
+    void solve(vector<vector<int>> &land, int row, int col, int &maxR, int &maxC){
+        maxR = max(maxR, row);
+        maxC = max(maxC, col);
         
         int x[4] = {-1, 0, 1, 0};
         int y[4] = {0, -1, 0, 1};
@@ -16,7 +14,7 @@ public:
             int nc = col+y[i];
             if(nr>=0 and nr<n and nc>=0 and nc<m and land[nr][nc]==1){
                 land[nr][nc] = 0;
-                solve(land, nr, nc, mini, minj, maxi, maxj);
+                solve(land, nr, nc, maxR, maxC);
             }
         }
     }
@@ -28,9 +26,9 @@ public:
         for(int i = 0; i<n; i++){
             for(int j = 0; j<m; j++){
                 if(land[i][j]==1){
-                    int mini = i, maxi = i, minj = j, maxj = j;
-                    solve(land, i, j, mini, minj, maxi, maxj);
-                    ans.push_back({mini, minj, maxi, maxj});
+                    int maxR = i, maxC = j;
+                    solve(land, i, j, maxR, maxC);
+                    ans.push_back({i,j, maxR, maxC});
                 }
             }
         }
