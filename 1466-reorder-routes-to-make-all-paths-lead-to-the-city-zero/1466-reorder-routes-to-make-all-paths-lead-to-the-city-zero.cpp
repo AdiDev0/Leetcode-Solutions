@@ -16,12 +16,14 @@ public:
             int node = q.front();
             vis[node] = 1;
             q.pop();
+            //goind away from 0
             for(auto it: adj[node]){
                 if(vis[it]==-1){
                     ans++;
                     q.push(it);
                 }
             }
+            //coming towards zero
             for(auto it: back[node]){
                 if(vis[it]==-1){
                     q.push(it);
@@ -31,6 +33,3 @@ public:
         return ans;
     }
 };
-
-
-// 1---->2---->0
