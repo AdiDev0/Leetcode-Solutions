@@ -7,7 +7,12 @@ public:
             return;
         }
         for(int i = 0; i<=9; i++){
-            if(abs(last-i)==k){
+            if(s.size()==0 and i!=0){
+                s+=to_string(i);
+                solve(s, i, k, n);
+                s.pop_back();
+            }
+            else if(last!=-1 and abs(last-i)==k){
                 s += to_string(i);
                 solve(s, i, k, n);
                 s.pop_back();
@@ -16,11 +21,7 @@ public:
     }
     vector<int> numsSameConsecDiff(int n, int k) {
         string s = "";
-        for(int i = 1; i<=9; i++){
-            s+=to_string(i);
-            solve(s, i, k, n);
-            s.pop_back();
-        }
+        solve(s, -1, k, n);
         return ans;
     }
 };
