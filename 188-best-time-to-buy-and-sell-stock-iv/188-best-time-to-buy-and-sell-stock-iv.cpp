@@ -29,6 +29,7 @@ public:
         int n = p.size();
         if(n==0) return 0;
         vector<vector<int>> dp(n+1,vector<int>(k+1, -1));
-        return solve(p, k, 0, 0, dp);
+        int ans = solve(p, k, 0, 0, dp);
+        return ans;
     }
 };
