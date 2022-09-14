@@ -12,7 +12,7 @@
 class Solution {
 public:
     int ans = 0;
-    void solve(TreeNode* root, vector<int> v){
+    void solve(TreeNode* root, vector<int> &v){
         if(root==NULL) return;
         v[root->val]++;
         if(root->left==NULL and root->right==NULL){
@@ -23,10 +23,10 @@ public:
                 }
             }
             if(odds<=1) ans++;
-            return;
         }
         solve(root->left, v);
         solve(root->right, v);
+        v[root->val]--;
     }
     int pseudoPalindromicPaths (TreeNode* root) {
         if(root==NULL) return 0;
