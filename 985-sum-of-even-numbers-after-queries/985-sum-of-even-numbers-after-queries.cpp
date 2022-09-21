@@ -12,16 +12,16 @@ public:
             int val = it[0];
             int ind = it[1];
             
-            if(abs(nums[ind])%2!=0){
+            if(nums[ind]%2!=0){
                 nums[ind]+=val;
-                if(abs(nums[ind])%2==0){
+                if(nums[ind]%2==0){
                     sum+=nums[ind];
                 }
             }
             else{
                 sum-=nums[ind];
                 nums[ind]+=val;
-                if(abs(nums[ind])%2==0){
+                if(nums[ind]%2==0){
                     sum+=nums[ind];
                 }
             }
