@@ -8,12 +8,10 @@ public:
         for(int i = 0; i<n; i++){
             for(auto it: ing[i]){
                 adj[it].push_back(r[i]);
+                ind[r[i]]++;
             }
         }
         
-        for(int i = 0; i<n; i++){
-            ind[r[i]] = ing[i].size();
-        }
         queue<string> q;
         for(auto it: sup){
             q.push(it);
