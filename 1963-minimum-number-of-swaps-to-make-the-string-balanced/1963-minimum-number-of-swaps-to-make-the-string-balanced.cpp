@@ -10,7 +10,7 @@ public:
             if(s[i]=='['){
                 st.push('[');
             }
-            else if(s[i]==']' and !st.empty()){
+            else if(!st.empty()){
                 st.pop();
             }
         }
