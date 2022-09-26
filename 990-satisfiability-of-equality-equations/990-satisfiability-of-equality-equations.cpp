@@ -49,3 +49,24 @@ public:
         return true;
     }
 };
+
+// arr = ["b==a","b==c","x==y","y==z","k==k"]
+// on the basis of equality 3 sets will be made.
+// 1 -> a, b, c (all of them are equal to one another, we will use 'a' as the representative of this set);
+// 2 -> x,y,z  (we will use 'x' as the representative of this set)
+// 3 -> k  (we will use 'k' as the representative of this set)
+
+
+// Disjoint set union
+
+// 1. It basically divides the elements into multiple sets.
+// 2. No element can belong to multiple sets.
+// 3. Each set has an element which is their representative ...it is also known as Parent.
+// 4. The rank representes the size of the set.
+// 5. We can combine/union two sets or one set and a element into a single set.
+// 6. The set will smaller rank combines to the set with greater rank.
+
+
+
+
+
