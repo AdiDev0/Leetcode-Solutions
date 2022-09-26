@@ -1,51 +1,65 @@
 class Solution {
 public:
-    int minnode(int n, int keyval[], bool mstset[]) { 
-      int mini = INT_MAX; 
-      int mini_index = -1; 
-      for (int i = 0; i < n; i++) { 
-        if (mstset[i] == false && keyval[i] < mini) { 
-          mini = keyval[i], mini_index = i; 
-        } 
-      } 
-      return mini_index; 
-    } 
-    int solve(int n, vector<vector<int>> &city) {
-        int parent[n]; 
-        int keyval[n]; 
-        bool mstset[n]; 
-        for (int i = 0; i < n; i++) { 
-            keyval[i] = numeric_limits<int>::max(); 
-            mstset[i] = false; 
-        } 
-        parent[0] = -1; 
-        keyval[0] = 0; 
-        for (int i = 0; i < n - 1; i++) { 
-            int u = minnode(n, keyval, mstset); 
-            mstset[u] = true; 
-            for (int v = 0; v < n; v++) { 
-              if (city[u][v] && mstset[v] == false && 
-                  city[u][v] < keyval[v]) { 
-                keyval[v] = city[u][v]; 
-                parent[v] = u; 
-              } 
-            } 
-          } 
-          int cost = 0; 
-          for (int i = 1; i < n; i++) {
-              cost += city[parent[i]][i];
-          }
-        return cost;
+    static bool cmp(vector<int> &a, vector<int> &b){
+        return a[0]<=b[0];
     }
-    int minCostConnectPoints(vector<vector<int>>& p) {
-        int n = p.size();
-        vector<vector<int>> cost(n, vector<int>(n));
-        for(int i=0; i<n; i++) {
-            for(int j=0; j<n; j++) {
-                cost[i][j] = abs(p[i][0] - p[j][0]) + abs(p[i][1] - p[j][1]);
+    int getParent(int p, unordered_map<int, int> &parent){
+        if(parent[p]==p){
+            return p;
+        }
+        return parent[p] = getParent(parent[p], parent);
+    }
+    int minCostConnectPoints(vector<vector<int>>& points) {
+        int n = points.size();
+        unordered_map<int, int> parent;
+        unordered_map<int, int> rank;
+        for(int i = 0; i<n; i++){
+            parent[i] = i;
+        }
+        for(int i = 0; i<n; i++){
+            rank[i] = 0;
+        }
+        vector<vector<int>> v;
+        for(int i = 0; i<n; i++){
+            for(int j = i+1; j<n; j++){
+                int a = abs(points[i][0]-points[j][0]);
+                int b = abs(points[i][1]-points[j][1]);
+                v.push_back({a+b, i, j});
             }
         }
-        int ans = solve(n, cost);
+        sort(v.begin(), v.end());
+        // for(auto it: v){
+        //     cout<<it[0]<<" "<<it[1]<<" "<<it[2]<<endl;
+        // }
+        int ans = 0;
+        for(auto it: v){
+            auto a = getParent(it[1], parent);
+            auto b = getParent(it[2], parent);
+            // cout<<a<<endl;
+            // cout<<b<<endl;
+            // cout<<endl;
+            
+            if(a!=b){
+                ans += it[0];
+                if(rank[a]<rank[b]){
+                    parent[a] = b;
+                }
+                else if(rank[a]>rank[b]){
+                    parent[b] = a;
+                }
+                else{
+                    parent[a] = b;
+                    rank[a]++;
+                }
+            }
+        }
         return ans;
     }
 };
+
+// [[3,12],[-2,5],[-4,1]]
+
+
+// 6 [-2,5],[-4,1]
+// 12  [3,12],[-2,5]
+// 18 [3,12],[-4,1]
