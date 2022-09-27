@@ -10,33 +10,33 @@
  */
 class Solution {
 public:
-    bool isPalindrome(ListNode* head) {
-        ListNode* fast = head;
-        ListNode* slow = head;
-        
-        while(fast->next and fast->next->next){
-            fast = fast->next->next;
-            slow = slow->next;
-        }
-        // cout<<slow->val<<endl;
+    ListNode* reverse(ListNode* head){
         ListNode* prev = NULL;
-        ListNode* current = slow->next;
-        ListNode* nextOne = NULL;
-        while(current){
-            nextOne = current->next;
-            current->next = prev;
-            prev = current;
-            current = nextOne;
+        ListNode* curr = head;
+        ListNode* nxt = NULL;
+        while(curr!=NULL){
+            nxt = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nxt;
         }
-        ListNode* secondHead = prev;
-        ListNode* p = head;
-        ListNode* q = prev;
-        while(q){
-            if(p->val!=q->val){
-                return false;
-            }
+        return prev;
+    }
+    bool isPalindrome(ListNode* head) {
+        ListNode* dummy = new ListNode(-1);
+        dummy->next = head;
+        ListNode* slow = dummy;
+        ListNode* fast = dummy;
+        while(fast!=NULL and fast->next!=NULL){
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        ListNode* list = reverse(slow->next);
+        ListNode*p = head;
+        while(list!=NULL){
+            if(list->val!=p->val) return false;
+            list = list->next;
             p = p->next;
-            q = q->next;
         }
         return true;
     }
