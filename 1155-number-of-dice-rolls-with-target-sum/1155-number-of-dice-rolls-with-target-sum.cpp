@@ -1,9 +1,9 @@
 class Solution {
 public:
     int mod = 1e9+7;
-    int solve(int n, int k, int t, vector<vector<vector<int>>> &dp){
+    int solve(int n, int k, int t, vector<vector<int>> &dp){
         if(t<0 or n<0) return 0;
-        if(dp[n][k][t]!=-1) return dp[n][k][t];
+        if(dp[n][t]!=-1) return dp[n][t];
         if(n==0 and t==0){
             return 1;
         }
@@ -12,10 +12,10 @@ public:
             cnt = cnt + solve(n-1, k, t-i, dp);
             cnt%=mod;
         }
-        return dp[n][k][t] = cnt;
+        return dp[n][t] = cnt;
     }
     int numRollsToTarget(int n, int k, int target) {
-        vector<vector<vector<int>>> dp(n+1, vector<vector<int>>(k+1, vector<int>(target+1, -1)));
+        vector<vector<int>> dp(n+1, vector<int>(target+1, -1));
         return solve(n, k, target, dp);
     }
 };
