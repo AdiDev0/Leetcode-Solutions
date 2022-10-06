@@ -1,5 +1,7 @@
 class Solution {
 public:
+    // O(no of bits in a + no of bits in b)
+    
     // static bool cmp(int a, int b){
     //     int A = a;
     //     int B = b;
@@ -16,6 +18,9 @@ public:
     //     if(cntA==cntB) return A<B;
     //     return cntA<cntB;
     // }
+    
+    //faster one 
+    // O(no of set bits in a + no of set bits in b)
     static bool cmp(int a, int b){
         int A = a;
         int B = b;
@@ -37,3 +42,5 @@ public:
         return arr;
     }
 };
+
+// int cnt = __builtin_popcount(a) gives the no of set bits in a
