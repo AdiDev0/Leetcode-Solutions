@@ -1,6 +1,7 @@
 class StockPrice {
 public:
-    map<int,int> m, p;
+    map<int,int> m;
+    multiset<int> s;
     int curr = -1;
     StockPrice() {
         
@@ -9,14 +10,9 @@ public:
     void update(int timestamp, int price) {
         if(m[timestamp]>0){
             int prevPrice = m[timestamp];
-            if(p[prevPrice]==1){
-                p.erase(prevPrice);
-            }
-            else{
-                p[prevPrice]--;
-            }
+            s.erase(s.find(prevPrice));
         }
-        p[price]++;
+        s.insert(price);
         m[timestamp] = price;
     }
     
@@ -25,11 +21,14 @@ public:
     }
     
     int maximum() {
-        return p.rbegin()->first;
+        auto it = s.end();
+        it--;
+        return *it;
     }
     
     int minimum() {
-        return p.begin()->first;
+        auto it = s.begin();
+        return *it;
     }
 };
 
