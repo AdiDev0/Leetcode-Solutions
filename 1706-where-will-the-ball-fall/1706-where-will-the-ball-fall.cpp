@@ -24,14 +24,11 @@ public:
             node *n = new node(0, i, 'd', i);
             q.push(*n);
         }
-        // node *nn = new node(0, 4, 'd', 4);
-        // q.push(*nn);
         while(!q.empty()){
             auto t = q.front();
             q.pop();
             int x = t.xx;
             int y = t.yy;
-            // cout<<x<<" "<<y<<endl;
             if(x==n){
                 ans[t.loc] = y;
                 continue;
