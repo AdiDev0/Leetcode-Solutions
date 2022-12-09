@@ -25,16 +25,11 @@ string buildLowestNumber(string s, int k){
     stack<char> st;
     
     for(auto it: s){
-        if(st.empty()){
-            st.push(it);
+        while(!st.empty() and st.top()>it and k>0){
+            st.pop();
+            k--;
         }
-        else{
-            while(!st.empty() and st.top()>it and k>0){
-                st.pop();
-                k--;
-            }
-            st.push(it);
-        }
+        st.push(it);
     }
     while(k--){
         st.pop();
