@@ -15,12 +15,12 @@ class Solution {
         }
         vector<int> vis(n+1, 1e9);
         vis[k] = 0;
-        priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
+        queue<pair<int,int>> pq;
         pq.push({0, k});
         
         while(!pq.empty()){
-            int node = pq.top().second;
-            int dist = pq.top().first;
+            int node = pq.front().second;
+            int dist = pq.front().first;
             pq.pop();
             
             for(auto it: adj[node]){
